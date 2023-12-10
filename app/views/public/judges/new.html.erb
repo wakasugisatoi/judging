@@ -1,1 +1,10 @@
-<p>JUDGE!!</p>
+<h1>JUDGE!!</h1>
+<%= form_with model: @judge, url: judges_path, method: :post, local: true do |f| %>
+  <%= f.collection_select :history_id, History.all, :id, :year, include_blank: "選択してください" %>
+  <%= f.collection_select :comedian_id, @history.comedians, :id, :name, include_blank: "選択してください" %>
+ 
+  <h1><%= f.text_field :point %>点</h1>
+  <%= f.text_area :impression, placeholder: '感想記入欄(300文字以内）' %>
+
+  <%= f.submit '投稿する' %>
+<% end %>

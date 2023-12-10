@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 2023_12_06_132520) do
   create_table "judges", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "comedian_id", null: false
+    t.integer "history_id", null: false
     t.integer "point", null: false
     t.text "impression", null: false
     t.datetime "created_at", precision: 6, null: false
