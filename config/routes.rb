@@ -13,11 +13,13 @@ Rails.application.routes.draw do
       resources :judge_comments, only: [:create, :destroy]
     end
     resources :users, only: [:update] do
-      get 'mypage'=> 'users#show'
+      get 'mypage' => 'users#show'
       get 'information/edit' => 'users#edit'
     end 
-    resources :histories, only: [:index]
-    resources :comedians, only: [:index]
+    resources :histories, only: [:index] do
+      get 'comedians', on: :member, to: 'histories#index_comedians', as: 'comedians'
+    end
+      get 'comedians/:id' => 'comedians#index', as: 'comedian'
   end 
   
   

@@ -1,4 +1,4 @@
 <h1>History</h1>
 <% @histories.each do |history| %>
-  <span><%= link_to history.year, comedians_path(year: history.year) %></span>
+  <span><%= link_to history.year, comedians_history_path(history.id) %></span>
 <% end %>

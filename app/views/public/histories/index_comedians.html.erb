@@ -1,0 +1,5 @@
+<h2><%= @history.year %> 年のファイナリスト一覧</h2>
+
+<% @comedians.each do |comedian| %>
+  <span><%= link_to comedian.name, comedian_path(comedian.id) %></span>
+<% end %>

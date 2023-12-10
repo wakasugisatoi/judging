@@ -1,6 +1,5 @@
 class Public::ComediansController < ApplicationController
   def index
-    @history = History.find_by_year(params[:year])
-    @comedians = Comedian.where(history_id: @history.id)
+   @comedian = Comedian.find_by_name(params[:name])
   end
 end
