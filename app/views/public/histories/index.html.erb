@@ -1,2 +1,4 @@
-<h1>Public::Histories#index</h1>
-<p>Find me in app/views/public/histories/index.html.erb</p>
+<h1>History</h1>
+<% @histories.each do |history| %>
+  <span><%= link_to history.year, comedians_path(year: history.year) %></span>
+<% end %>

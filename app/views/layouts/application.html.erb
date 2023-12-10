@@ -12,6 +12,37 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/">logo</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+              <% if user_signed_in? %>
+                <li><%= link_to "審査投稿", new_judge_path %></li>
+                <li><%= link_to "ファイナリスト", histories_path %></li>
+                 <!--URL変更-->
+                <li><%= link_to "マイページ", histories_path %></li> 
+                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+              <% elsif admin_signed_in? %>
+                <li><%= link_to "ファイナリスト", admin_homes_top_path %></li>
+                <li><%= link_to "ユーザー", admin_users_path %></li>
+                <li><%= link_to "審査", admin_judges_path %></li>
+                <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to "ファイナリスト", histories_path %></li>
+                <li><%= link_to "新規登録", new_user_registration_path %></li>
+                <li><%= link_to "ログイン", new_user_session_path %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main><%= yield %></main>
+    <footer></footer>
   </body>
 </html>

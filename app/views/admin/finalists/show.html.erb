@@ -1,2 +1,9 @@
-<h1>Admin::Finalists#show</h1>
-<p>Find me in app/views/admin/finalists/show.html.erb</p>
+<h2><%= @history.year %>年のファイナリスト</h2>
+<%= link_to edit_admin_finalist_path(@history.id) do %>
+  <p>ファイナリストを編集する</p>
+  <i class="fas fa-chevron-circle-right"></i>
+<% end %>
+
+<% @history.comedians.each.with_index(1) do |comedian, n| %>
+  <div><%= "#{n}組目" %> <%= comedian.name %></div>
+<% end %>

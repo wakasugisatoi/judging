@@ -1,2 +1,17 @@
-<h1>Admin::Finalists#edit</h1>
-<p>Find me in app/views/admin/finalists/edit.html.erb</p>
+<%= form_with model: @history, url: admin_finalist_path(@history.id), method: :patch, local: true do |form| %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= form.label :year, "年" %>
+      <%= form.text_field :year, class: "form-control" %>
+    </div>
+    <div class="col-md-8">
+      <% n = 1 %>
+      <%= form.fields_for :comedians do |comedian| %>
+        <h3><%= "#{n}組目" %></h3>
+        <%= comedian.text_field :name, class: "form-control" %>
+        <% n += 1 %>
+      <% end %>
+    </div>
+  </div>
+  <div><%= form.submit "変更を保存する" %></div>
+<% end %>

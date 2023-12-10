@@ -1,4 +1,4 @@
 class JudgeComment < ApplicationRecord
-  belong_to :user
-  belong_to :judge
+  belongs_to :user
+  belongs_to :judge
 end

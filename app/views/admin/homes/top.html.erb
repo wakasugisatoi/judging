@@ -1,2 +1,9 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<h1>History</h1>
+<%= link_to new_admin_finalist_path do %>
+  <p>ファイナリストを追加</p>
+  <i class="fas fa-chevron-circle-right"></i>
+<% end %>
+
+<% @histories.each do |history| %>
+  <span><%= link_to history.year, admin_finalists_path(year: history.year) %></span>
+<% end %>

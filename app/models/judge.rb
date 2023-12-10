@@ -1,4 +1,6 @@
 class Judge < ApplicationRecord
-  belong_to :user
-  has_many :judge_comment, dependent: :destroy
+  belongs_to :user
+  belongs_to :comedian
+  has_many :judge_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 end
