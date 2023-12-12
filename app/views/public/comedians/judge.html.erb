@@ -1,0 +1,18 @@
+<h1><%= @comedian.name %> の審査一覧</h1>
+
+<% if @judges.any? %>
+  <% @judges.each do |judge| %>
+    <%= link_to mypage_user_path(@user.id) do %>
+      <%= image_tag @user.get_image %>
+      <%= @user.name %>
+    <% end %>
+    <%= link_to judge_path(judge.id) do %>
+      <%= @history.year %> >>
+      <%= @comedian.name %>
+      <h3><%= judge.point %> 点</h3>
+      <%= judge.impression %>
+    <% end %>
+  <% end %>
+<% else %>
+  <p>投稿はありません。</p>
+<% end %>

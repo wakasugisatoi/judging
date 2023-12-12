@@ -1,34 +1,52 @@
 class Public::JudgesController < ApplicationController
+  def get_comedians_by_year
+    year = params[:year]
+    comedians = Comedian.joins(:histories).where(histories: { year: year }).distinct
+
+    render json: comedians.select(:id, :name)
+  end
   
   def index
   end
   
   def new
-    @history = History.find_by_year(params[:year]) || History.last
-    @comedian = Comedian.where(history_id: @history)
     @judge = Judge.new
-    
+    @histories = History.all
+    @comedians = []
+  end
+  
+  def search_comedians
+    @history = History.find(params[:history_id])
+    @comedians = @history.comedians
   end
 
   def create
     @judge = Judge.new(judge_params)
-    if @judge.save
-      redirect_to comedian_path(@history.comedians.id)
-    else
-      render new
-    end
-  end 
+    @judge.save
+    redirect_to comedian_judge_path(@judge.comedian_id)
+  end
   
   def show
+    @judge = Judge.find(params[:id])
   end
 
   def edit
+    @judge = Judge.find(params[:id])
   end
 
   def update
+    @judge = Judge.find(params[:id])
+    if @judge.update
+      redirect_to judge_path(@judge.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
+    judge = Judge.find(params[:id])
+    judge.destory
+    redirect_to request.referer
   end
   
   private

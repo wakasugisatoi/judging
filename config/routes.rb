@@ -9,17 +9,18 @@ Rails.application.routes.draw do
     root 'homes#top'
     get 'about' => 'homes#about', as: 'about'
     resources :judges, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+      post 'search_comedians', to: 'judges#search_comedians'
       resource :favorites, only: [:create, :destroy]
       resources :judge_comments, only: [:create, :destroy]
     end
     resources :users, only: [:update] do
-      get 'mypage' => 'users#show'
-      get 'information/edit' => 'users#edit'
-    end 
+      get 'mypage', on: :member, to: 'users#show', as: 'mypage'
+      get 'information/edit', on: :member, to: 'users#edit', as: 'edit_information'
+    end
     resources :histories, only: [:index] do
       get 'comedians', on: :member, to: 'histories#index_comedians', as: 'comedians'
     end
-      get 'comedians/:id' => 'comedians#index', as: 'comedian'
+      get 'comedian/:id/judges' => 'comedians#judge', as: 'comedian_judge'
   end 
   
   

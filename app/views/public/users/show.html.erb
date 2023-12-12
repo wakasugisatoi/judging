@@ -1,2 +1,21 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div>
+  <%= image_tag @user.get_image %>
+  <h3><%= @user.name %></h3>
+  <%= link_to edit_information_user_path, class: "btn btn-secondary" do %>
+    <i class="fas fa-user-cog"></i>
+  <% end %>
+  <%= @user.introduction %>
+</div>
+
+<% @judges.each do |judge| %>
+  <div>
+    <%= link_to mypage_user_path(@user.id) do %>
+      <%= image_tag @user.get_image %>
+      <%= @user.name %>
+    <% end %>
+    <h3><%= judge.point %>点</h3>
+    <%= judge.impression %>
+  </div>
+<% end %>
+
+

@@ -24,8 +24,7 @@
               <% if user_signed_in? %>
                 <li><%= link_to "審査投稿", new_judge_path %></li>
                 <li><%= link_to "ファイナリスト", histories_path %></li>
-                 <!--URL変更-->
-                <li><%= link_to "マイページ", histories_path %></li> 
+                <li><%= link_to "マイページ", mypage_user_path(current_user) %></li> 
                 <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
               <% elsif admin_signed_in? %>
                 <li><%= link_to "ファイナリスト", admin_homes_top_path %></li>

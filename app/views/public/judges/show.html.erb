@@ -1,2 +1,14 @@
-<h1>Public::Judges#show</h1>
-<p>Find me in app/views/public/judges/show.html.erb</p>
+<h1>詳細</h1>
+<% @judges.each do |judge| %>
+  <%= link_to mypage_user_path(@user.id) do %>
+    <%= image_tag @user.get_image %>
+    <%= @user.name %>
+  <% end %>
+  <%= @history.year %> >>
+  <%= @comedian.name %>
+  <h3><%= judge.point %>点</h3>
+  <%= judge.impression %>
+  <%= f.submit '投稿する' %>
+<% end %>
+<%= link_to  edit_judge_path(@judge.id) , class : "btn btn-secondary" do %>編集<% end %>
+<%= link_to "削除", judge_path(@judge.id), data: { confirm: "本当に削除しますか？" }, method: delate, class: "btn btn-secondary" %>
