@@ -4,4 +4,6 @@ class Admin::HomesController < ApplicationController
       @year = params[:year]
       @histories = History.all
     end
+    
+    
 end

@@ -9,6 +9,13 @@ class User < ApplicationRecord
   
   has_one_attached :image
   
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = 'Guest User'
+    end
+  end
+  
   def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
