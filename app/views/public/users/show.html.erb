@@ -2,8 +2,10 @@
 <div>
   <%= image_tag @user.get_image %>
   <h3><%= @user.name %></h3>
-  <%= link_to edit_information_user_path, class: "btn btn-secondary" do %>
-    <i class="fas fa-user-cog"></i>
+  <% if @user == current_user %>
+    <%= link_to edit_information_user_path, class: "btn btn-secondary" do %>
+      <i class="fas fa-user-cog"></i>
+    <% end %>
   <% end %>
   <%= @user.introduction %>
 </div>
