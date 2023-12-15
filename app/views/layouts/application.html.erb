@@ -9,6 +9,8 @@
     <script src="https://kit.fontawesome.com/1a3f0d96a2.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--フォント-->
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@100&family=Zen+Maru+Gothic:wght@500&display=swap" rel="stylesheet">
   </head>
 
   <body>
@@ -22,19 +24,22 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
+                <li><%= link_to "ホーム", root_path %></li>
                 <li><%= link_to "審査投稿", new_judge_path %></li>
                 <li><%= link_to "ファイナリスト", histories_path %></li>
                 <li><%= link_to "マイページ", mypage_user_path(current_user) %></li> 
                 <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
               <% elsif admin_signed_in? %>
                 <li><%= link_to "ファイナリスト", admin_homes_top_path %></li>
-                <li><%= link_to "ユーザー", admin_users_path %></li>
-                <li><%= link_to "審査", admin_judges_path %></li>
+                <li><%= link_to "ユーザー管理", admin_users_path %></li>
+                <li><%= link_to "投稿管理", admin_judges_path %></li>
                 <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
               <% else %>
+                <li><%= link_to "ホーム", root_path %></li>
                 <li><%= link_to "ファイナリスト", histories_path %></li>
                 <li><%= link_to "新規登録", new_user_registration_path %></li>
                 <li><%= link_to "ログイン", new_user_session_path %></li>
+                <li><%= link_to 'ゲストログイン', users_guest_guest_sign_in_path, method: :post %></li>
               <% end %>
             </ul>
           </div>
@@ -42,8 +47,13 @@
       </nav>
     </header>
     <main>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if flash[:notice] %>
+        <p class="flash-message notice"><%= flash[:notice] %></p>
+      <% end %>
+      <% if flash[:alert] %>
+        <p class="flash-message alert"><%= flash[:alert] %></p>
+      <% end %>
+      
       <%= yield %>
     </main>
     <footer></footer>

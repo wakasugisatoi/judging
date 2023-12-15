@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     
     resources :judges, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
       post 'search_comedians', to: 'judges#search_comedians'
+
       resource :favorites, only: [:create, :destroy]
       resources :judge_comments, only: [:create, :destroy]
     end
@@ -37,7 +38,11 @@ Rails.application.routes.draw do
     
     resources :finalists, only: [:index, :show, :new, :create, :edit, :update]
     resources :judges, only: [:index, :destroy]
-    resources :users, only: [:index, :show, :destroy]
+    resources :users, only: [:index, :show] do
+      member do
+        patch :status
+      end
+    end
   end
   
   #ログアウトでルーティングエラーが出るので以下を記述

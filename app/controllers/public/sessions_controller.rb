@@ -23,9 +23,14 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    user = User.find_by(email: params['email'])
+    if user.present? && user.status == 'not_active' # statusは「active or not_active」
+      redirect_to user_session_path
+    end
+
+    super
+  end
 
   # DELETE /resource/sign_out
   # def destroy

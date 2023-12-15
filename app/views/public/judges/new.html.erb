@@ -1,11 +1,12 @@
 <h1>JUDGE!!</h1>
+<%= render 'public/judges/error_message', hoge: @judge %>
 <%= form_with model: @judge, url: judges_path, method: :post, local: true do |f| %>
  
   <%= f.collection_select :history_id, @histories, :id, :year, { prompt: "年を選択"}, { class: 'form-control', id: 'historyForm'} %>
   <div id="comedian"><%= render 'public/judges/comedian_form', comedians: @comedians %></div>
   
   <h1><%= f.text_field :point %>点</h1>
-  <%= f.text_area :impression, placeholder: '感想記入欄(300文字以内）' %>
+  <%= f.text_area :impression, placeholder: '感想を書こう！(300文字以内）' %>
 
   <%= f.submit '投稿する' %>
 <% end %>

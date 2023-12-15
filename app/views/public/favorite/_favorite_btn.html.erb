@@ -1,0 +1,11 @@
+<% if judge.favorited_by?(current_user) %>
+  <%= link_to judge_favorites_path(judge), method: :delete do %>
+    <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+    <%= judge.favorites.count %> 
+  <% end %>
+<% else %>
+  <%= link_to judge_favorites_path(judge), method: :post do %>
+    <i class="fa-regular fa-heart" aria-hidden="true"></i>
+    <%= judge.favorites.count %> 
+  <% end %>
+<% end %>

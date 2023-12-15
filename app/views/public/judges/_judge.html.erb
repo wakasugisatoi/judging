@@ -1,0 +1,15 @@
+<%= link_to mypage_user_path(judge.user.id) do %>
+  <%= image_tag judge.user.get_image %>
+  <%= judge.user.name %>
+<% end %>
+<%= link_to judge_path(judge.id) do %>
+  <%= judge.history.year %> 年>>
+  <%= judge.comedian.name %>
+  <h3><%= judge.point %> 点</h3>
+  <%= judge.impression %>
+<% end %>
+<%= render 'public/favorite/favorite_btn', judge: judge %>
+<%= link_to judge_path(judge) do %>
+  <i class="fa-regular fa-message"></i>
+  <%= judge.judge_comments.count %>
+<% end %>

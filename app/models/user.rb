@@ -9,6 +9,10 @@ class User < ApplicationRecord
   
   has_one_attached :image
   
+  validates :name, presence: true
+  validates :introduction, length: { maximum: 140 }
+  
+  
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
@@ -24,4 +28,5 @@ class User < ApplicationRecord
     image.variant(resize_to_limit: [100, 100]).processed
   end
   
+  enum status: { active: 0, inactive: 1 }
 end

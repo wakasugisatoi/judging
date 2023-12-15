@@ -1,0 +1,9 @@
+<h1>新着の投稿</h1>
+
+<% if @judges.any? %>
+  <% @judges.each do |judge| %>
+    <%= render 'public/judges/judge', judge: judge %>
+  <% end %>
+<% else %>
+  <p>投稿はありません。</p>
+<% end %>

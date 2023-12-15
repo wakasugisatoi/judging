@@ -1,3 +1,4 @@
+<h1>プロフィール</h1>
 <div>
   <%= image_tag @user.get_image %>
   <h3><%= @user.name %></h3>
@@ -8,14 +9,7 @@
 </div>
 
 <% @judges.each do |judge| %>
-  <div>
-    <%= link_to mypage_user_path(@user.id) do %>
-      <%= image_tag @user.get_image %>
-      <%= @user.name %>
-    <% end %>
-    <h3><%= judge.point %>点</h3>
-    <%= judge.impression %>
-  </div>
+  <%= render 'public/judges/judge', judge: judge %>
 <% end %>
 
 
