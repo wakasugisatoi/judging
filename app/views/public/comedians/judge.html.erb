@@ -1,3 +1,6 @@
+<%= link_to comedians_history_path(@comedian.history) do %>
+<h1><i class="fa-solid fa-angle-left"></i></h1>
+<% end %>
 <h1><%= @comedian.name %> の審査一覧</h1>
 
 <% if @judges.any? %>

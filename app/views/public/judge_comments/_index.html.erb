@@ -1,0 +1,11 @@
+<div>
+  <% judge.judge_comments.each do |judge_comment| %>
+    <%= image_tag judge_comment.user.get_image %>
+    <%= judge_comment.user.name %>
+    <%= time_ago_in_words(judge_comment.created_at) %>前
+    <%= judge_comment.comment %>
+    <% if judge_comment.user == current_user %>
+      <%= link_to "削除", judge_judge_comment_path(judge ,judge_comment), method: :delete, class: "btn btn-secondary" %>
+    <% end %>
+  <% end %>
+</div>

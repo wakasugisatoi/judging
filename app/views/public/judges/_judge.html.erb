@@ -8,8 +8,10 @@
   <h3><%= judge.point %> 点</h3>
   <%= judge.impression %>
 <% end %>
-<%= render 'public/favorite/favorite_btn', judge: judge %>
+<div id="favorite_btn_<%= judge.id %>">
+  <%= render 'public/favorites/favorite_btn', judge: judge %>
+</div>
+
 <%= link_to judge_path(judge) do %>
-  <i class="fa-regular fa-message"></i>
-  <%= judge.judge_comments.count %>
+  <%= render 'public/judge_comments/counter', judge: judge %>
 <% end %>

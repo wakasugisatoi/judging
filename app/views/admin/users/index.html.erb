@@ -5,10 +5,8 @@
       <%= image_tag user.get_image %>
       <%= user.name %>
     <% end %>
-   <!--   < if user.is_active? %>-->
-			<!--	<span class="text-active">有効</span>	-->
-			<!--< else %>-->
-			<!--	<span class="text-invalid">利用停止中</span>-->
-			<!--< end %>-->
+    <% if user.is_active == false %>
+      <span class="text-danger font-weight-bold">利用停止</span>
+    <% end %>
   </div>
 <% end %>

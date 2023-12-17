@@ -1,0 +1,3 @@
+$('#comment_counter').html("<%= j(render 'public/judge_comments/counter', judge: @judge) %>");
+$('#comment_index').html("<%= j(render 'public/judge_comments/index', judge: @judge) %>");
+$('#judge_comment_comment').val(""); 

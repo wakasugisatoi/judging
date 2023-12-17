@@ -1,5 +1,6 @@
 class Public::JudgesController < ApplicationController
-  before_action :authenticate_user!,{only: [ :new, :create, :update, :edit, :destroy, :search_comedians ]}
+  before_action :authenticate_user!, only: [:new, :edit]
+  
   def get_comedians_by_year
     year = params[:year]
     comedians = Comedian.joins(:histories).where(histories: { year: year }).distinct

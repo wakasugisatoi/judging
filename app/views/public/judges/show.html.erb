@@ -1,3 +1,6 @@
+<%= link_to comedian_judge_path(@judge.comedian) do %>
+  <h1><i class="fa-solid fa-angle-left"></i></h1>
+<% end %>
 <h1>詳細</h1>
 <div>
   <%= link_to mypage_user_path(@judge.user.id) do %>
@@ -9,28 +12,19 @@
   <h3><%= @judge.point %>点</h3>
   <%= @judge.impression %>
 </div>
-<%= render 'public/favorite/favorite_btn', judge: @judge %>
-<p><i class="fa-regular fa-message"></i><%= @judge.judge_comments.count %></p>
+<div id="favorite_btn_<%= @judge.id %>">
+  <%= render 'public/favorites/favorite_btn', judge: @judge %>
+</div>
+<div id="comment_counter">
+  <%= render 'public/judge_comments/counter', judge: @judge %>
+</div>
 <% if user_signed_in? && current_user == @judge.user %>
   <%= link_to edit_judge_path(@judge.id), class: "btn btn-secondary" do %>編集<% end %>
   <%= link_to "削除", judge_path(@judge.id), data: { confirm: "本当に削除しますか？" }, method: :delete, class: "btn btn-secondary" %>
 <% end %>
 
-<div>
-  <% @judge.judge_comments.each do |judge_comment| %>
-    <%= image_tag judge_comment.user.get_image %>
-    <%= judge_comment.user.name %>
-    <%= time_ago_in_words(judge_comment.created_at) %>前
-    <%= judge_comment.comment %>
-    <% if judge_comment.user == current_user %>
-      <%= link_to "削除", judge_judge_comment_path(judge_comment), method: :delete, class: "btn btn-secondary" %>
-    <% end %>
-  <% end %>
-  
+<div id="comment_index">
+  <%= render 'public/judge_comments/index', judge: @judge %>
 </div>
-<div>
-  <%= form_with model: [@judge, @judge_comment] do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
-  <% end %>
-</div>
+
+<%= render 'public/judge_comments/form', judge: @judge, judge_comment: @judge_comment %>

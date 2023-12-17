@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+  before_action :user_state, only: [:create]
   
   def guest_sign_in
     user = User.guest
@@ -15,6 +16,25 @@ class Public::SessionsController < Devise::SessionsController
   def after_sign_out_path_for(resource)
     root_path
   end
+  
+  private
+
+  def user_state
+    user = User.find_by(email: params[:user][:email])
+    if user.present? 
+      if user.valid_password?(params[:user][:password]) && !user.is_active
+        flash[:alert] = "このアカウントは利用停止されました。"
+        redirect_to new_user_session_path
+      end 
+    end
+  end
+      # 
+      #   flash[:alert] = "このアカウントは利用停止されました。"
+      #   redirect_to user_session_path and return
+      # else
+      #   super
+      # end
+      
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -22,15 +42,9 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # POST /resource/sign_in
-  def create
-    user = User.find_by(email: params['email'])
-    if user.present? && user.status == 'not_active' # statusは「active or not_active」
-      redirect_to user_session_path
-    end
+  # inactive_users = User.where(is_active: false)
 
-    super
-  end
+  # POST /resource/sign_in
 
   # DELETE /resource/sign_out
   # def destroy

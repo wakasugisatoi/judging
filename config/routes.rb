@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     resources :judges, only: [:index, :destroy]
     resources :users, only: [:index, :show] do
       member do
-        patch :status
+        patch :is_active
       end
     end
   end

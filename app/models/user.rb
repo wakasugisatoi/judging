@@ -28,5 +28,4 @@ class User < ApplicationRecord
     image.variant(resize_to_limit: [100, 100]).processed
   end
   
-  enum status: { active: 0, inactive: 1 }
 end

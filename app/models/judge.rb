@@ -11,6 +11,8 @@ class Judge < ApplicationRecord
   validates :comedian_id, presence: true
   
   def favorited_by?(user)
-   favorites.exists?(user_id: user.id)
+    return false unless user && user.id
+    favorites.exists?(user_id: user.id)
   end
+  
 end
