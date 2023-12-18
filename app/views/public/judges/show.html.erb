@@ -1,30 +1,82 @@
-<%= link_to comedian_judge_path(@judge.comedian) do %>
-  <h1><i class="fa-solid fa-angle-left"></i></h1>
-<% end %>
-<h1>詳細</h1>
-<div>
-  <%= link_to mypage_user_path(@judge.user.id) do %>
-    <%= image_tag @judge.user.get_image %>
-    <%= @judge.user.name %>
-  <% end %>
-  <%= @judge.history.year %> >>
-  <%= @judge.comedian.name %>
-  <h3><%= @judge.point %>点</h3>
-  <%= @judge.impression %>
-</div>
-<div id="favorite_btn_<%= @judge.id %>">
-  <%= render 'public/favorites/favorite_btn', judge: @judge %>
-</div>
-<div id="comment_counter">
-  <%= render 'public/judge_comments/counter', judge: @judge %>
-</div>
-<% if user_signed_in? && current_user == @judge.user %>
-  <%= link_to edit_judge_path(@judge.id), class: "btn btn-secondary" do %>編集<% end %>
-  <%= link_to "削除", judge_path(@judge.id), data: { confirm: "本当に削除しますか？" }, method: :delete, class: "btn btn-secondary" %>
-<% end %>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12 text-left">
+      <%= link_to comedian_judge_path(@judge.comedian) do %>
+        <i class="fa-solid fa-angle-left fa-2x"></i>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-5 mx-auto text-center">
+       <div class="card", style="width: 100%;">
+        <div class="row">
+          <div class="col-md-6 text-left ml-2 mt-2">
+            <%= link_to mypage_user_path(@judge.user.id) do %>
+              <%= image_tag @judge.user.get_image %>
+              <%= @judge.user.name %>
+            <% end %>
+            <div class="ml-5">
+              <%= @judge.history.year %>年
+              <i class="fa-solid fa-angles-right"></i>
+              <%= @judge.comedian.name %>
+            </div>
+          </div>
+          <div class="col-md-5 text-right mr-2 mt-2", style="font-size: 50px">
+            <%= @judge.point %>点
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 mx-auto text-left mt-4">
+            <%= @judge.impression %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="d-flex justify-content-end mr-5 mt-4">
+              <div id="favorite_btn_<%= @judge.id %>">
+                <%= render 'public/favorites/favorite_btn', judge: @judge %>
+              </div>
+              <div id="comment_counter", class="ml-3">
+                <%= render 'public/judge_comments/counter', judge: @judge %>
+              </div>
+              <% if user_signed_in? && current_user == @judge.user %>
+                <div class="ml-3">
+                  <%= link_to edit_judge_path(@judge.id) do %>
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  <% end %>
+                </div>
+                <div class="ml-3">
+                  <%= link_to judge_path(@judge.id), data: { confirm: "本当に削除しますか？" }, method: :delete  do %>
+                    <i class="fa-solid fa-trash-can"></i>
+                  <% end %>
+                </div>  
+              <% end %> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mx-auto text-center">
+      <div id="comment_index">
+        <%= render 'public/judge_comments/index', judge: @judge %>
+      </div>
+      <%= render 'public/judge_comments/form', judge: @judge, judge_comment: @judge_comment %>
+    </div>
+  </div>
+</div>   
+      
+ 
+      
+      
+        
+        
+        
+        
+      
+    
+    
 
-<div id="comment_index">
-  <%= render 'public/judge_comments/index', judge: @judge %>
-</div>
+ 
 
-<%= render 'public/judge_comments/form', judge: @judge, judge_comment: @judge_comment %>
+

@@ -1,12 +1,31 @@
-<%= link_to comedians_history_path(@comedian.history) do %>
-<h1><i class="fa-solid fa-angle-left"></i></h1>
-<% end %>
-<h1><%= @comedian.name %> の審査一覧</h1>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12 text-left">
+      <%= link_to comedians_history_path(@comedian.history) do %>
+        <i class="fa-solid fa-angle-left fa-2x"></i>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 mx-auto text-center">
+      <h2><i class="fa-solid fa-crown"></i><%= @comedian.history.year %>年<i class="fa-solid fa-crown"></i></h2>
+      <h2><%= @comedian.name %></h2>
+    </div>
+    <div class="col-md-6 mx-auto text-center">
+      <% if @judges.any? %>
+        <% @judges.each do |judge| %>
+          <%= render 'public/judges/judge', judge: judge %>
+        <% end %>
+      <% else %>
+        <p>投稿はありません。</p>
+      <% end %>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+  
+</div>
 
-<% if @judges.any? %>
-  <% @judges.each do |judge| %>
-    <%= render 'public/judges/judge', judge: judge %>
-  <% end %>
-<% else %>
-  <p>投稿はありません。</p>
-<% end %>
+
+
+

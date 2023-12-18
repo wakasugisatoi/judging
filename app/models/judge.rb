@@ -7,8 +7,8 @@ class Judge < ApplicationRecord
   
   validates :point, presence: true
   validates :impression, length: { in: 1..300 }
-  validates :history_id, presence: true
-  validates :comedian_id, presence: true
+  # validates :history_id, presence: true
+  # validates :comedian_id, presence: true
   
   def favorited_by?(user)
     return false unless user && user.id
