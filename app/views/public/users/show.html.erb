@@ -1,17 +1,38 @@
-<h1>プロフィール</h1>
-<div>
-  <%= image_tag @user.get_image %>
-  <h3><%= @user.name %></h3>
-  <% if @user == current_user %>
-    <%= link_to edit_information_user_path, class: "btn btn-secondary" do %>
-      <i class="fas fa-user-cog"></i>
-    <% end %>
-  <% end %>
-  <%= @user.introduction %>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-7 mx-auto text-center">
+      <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <div class="row mt-5">
+          <div class="col-md-7 d-flex ml-3">
+            <%= image_tag @user.get_image, class: "large-image"  %>
+            <h3><%= @user.name %></h3>
+          </div>
+          <div class="col-md-4 text-right">
+            <% if @user == current_user %>
+              <%= link_to edit_information_user_path, class: "btn btn-secondary" do %>
+                <i class="fa-solid fa-pen"></i>編集
+              <% end %>
+            <% end %>
+          </div>
+          <div class="card mx-3 mt-4 text-bottom">
+            <div class="card-title">
+              <%= @user.introduction %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col mt-5">
+            <% @judges.each do |judge| %>
+              <%= render 'public/judges/judge', judge: judge %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+  
+  
 
-<% @judges.each do |judge| %>
-  <%= render 'public/judges/judge', judge: judge %>
-<% end %>
 
 

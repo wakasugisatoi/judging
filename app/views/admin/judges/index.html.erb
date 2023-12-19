@@ -1,12 +1,41 @@
-<% @judges.each do |judge| %>
-  
-  <%= image_tag judge.user.get_image %>
-  <%= judge.user.name %>
-
-
-  <%= judge.history.year %> 年>>
-  <%= judge.comedian.name %>
-  <h3><%= judge.point %> 点</h3>
-  <%= judge.impression %>
-   <%= link_to "削除", admin_judge_path(judge), data: { confirm: "本当に削除しますか？" }, method: :delete, class: "btn btn-secondary" %>
-<% end %>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <div class="card-header text-center">
+          <h3>投稿管理</h3>
+        </div>
+        <div class="card-body">
+          <% @judges.each do |judge| %>
+            <div class="card mx-auto" style="width: 100%;">
+              <div class="row mt-3">
+                <div class="col-md-1"></div>
+                <div class="col-md-7 text-left">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <%= link_to admin_user_path(judge.user) do %>
+                      <%= image_tag judge.user.get_image %>
+                      <%= judge.user.name %>
+                    <% end %>
+                    <div>
+                      <%= judge.history.year %> 年
+                      <i class="fa-solid fa-angles-right"></i>
+                      <%= judge.comedian.name %>
+                    </div>
+                    <%= judge.point %> 点
+                  </div>
+                </div>
+                <div class="col-md-3 text-right">
+                  <%= link_to "削除", admin_judge_path(judge), data: { confirm: "本当に削除しますか？" }, method: :delete, class: "btn btn-secondary" %>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-7 mx-auto text-left">
+                  <%= judge.impression %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

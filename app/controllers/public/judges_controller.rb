@@ -9,7 +9,7 @@ class Public::JudgesController < ApplicationController
   end
   
   def index
-    @judges = Judge.all
+    @judges = Judge.all.order(created_at: :desc)
   end
   
   def new

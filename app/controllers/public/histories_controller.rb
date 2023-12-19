@@ -1,6 +1,6 @@
 class Public::HistoriesController < ApplicationController
   def index
-    @histories = History.all
+    @histories = History.all.order(created_at: :desc)
   end
   
   def index_comedians

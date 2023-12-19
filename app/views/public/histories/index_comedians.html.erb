@@ -1,5 +1,29 @@
-<h2><%= @history.year %> 年のファイナリスト一覧</h2>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12 text-left">
+      <%= link_to  histories_path do %>
+        <i class="fa-solid fa-chevron-left fa-2x"></i>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-7 mx-auto text-center">
+      <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <h2><%= @history.year %> 年のファイナリスト一覧</h2>
+        <% @comedians.each_slice(3) do |comedians| %>
+          <div class="row">
+            <% comedians.each do |comedian| %>
+              <div class="col">
+                <span><%= link_to comedian.name, comedian_judge_path(comedian.id), class: "btn btn-warning mt-4", style: "width: 100px" %></span>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<% @comedians.each do |comedian| %>
-  <span><%= link_to comedian.name, comedian_judge_path(comedian.id) %></span>
-<% end %>
+
+
+  

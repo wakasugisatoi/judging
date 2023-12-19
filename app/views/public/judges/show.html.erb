@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <div class="row">
+  <div class="row"> 
     <div class="col-md-12 text-left">
       <%= link_to comedian_judge_path(@judge.comedian) do %>
         <i class="fa-solid fa-angle-left fa-2x"></i>
@@ -43,12 +43,12 @@
               <% if user_signed_in? && current_user == @judge.user %>
                 <div class="ml-3">
                   <%= link_to edit_judge_path(@judge.id) do %>
-                    <i class="fa-solid fa-pen-to-square"></i>
+                    <i class="fa-solid fa-pen-to-square"></i>編集
                   <% end %>
                 </div>
                 <div class="ml-3">
                   <%= link_to judge_path(@judge.id), data: { confirm: "本当に削除しますか？" }, method: :delete  do %>
-                    <i class="fa-solid fa-trash-can"></i>
+                    <i class="fa-solid fa-trash-can"></i>削除
                   <% end %>
                 </div>  
               <% end %> 

@@ -1,10 +1,24 @@
-<h2><%= @history.year %>年のファイナリスト一覧</h2>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-7 mx-auto text-center">
+      <h2><#%= @history.year %>年のファイナリスト一覧</h2>
+      <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <div class="card-header">
+          <#%= link_to edit_admin_finalist_path(@history.id) do %>
+            <div class="text-right">
+              <p>ファイナリストを編集する<i class="fas fa-chevron-circle-right"></i></p>
+            </div>
+          <#% end %>
+        </div>
+        <div class="card-body">
+          <#% @comedians.each.with_index(1) do |comedian, n| %>
+            <h5><#%= "#{n}組目" %> <#%= comedian.name %></h5>
+          <#% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to edit_admin_finalist_path(@history.id) do %>
-  <p>ファイナリストを編集する</p>
-  <i class="fas fa-chevron-circle-right"></i>
-<% end %>
 
-<% @comedians.each.with_index(1) do |comedian, n| %>
-  <div><%= "#{n}組目" %> <%= comedian.name %></div>
-<% end %>
+

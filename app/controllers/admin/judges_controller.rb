@@ -2,12 +2,13 @@ class Admin::JudgesController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @judges = Judge.all
+    @judges = Judge.all.order(created_at: :desc)
   end
 
   def destroy
-    Judge.find(params[:id]).destroy
-    redirect_to admin_judges_path
+    judge = Judge.find(params[:id])
+    judge.destroy
+    redirect_to  admin_user_path(judge.user)
   end
   
   

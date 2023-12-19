@@ -1,12 +1,45 @@
-<h1>ユーザー一覧</h1>
-<% @users.each do |user| %>
-  <div>
-    <%= link_to admin_user_path(user.id) do %>
-      <%= image_tag user.get_image %>
-      <%= user.name %>
-    <% end %>
-    <% if user.is_active == false %>
-      <span class="text-danger font-weight-bold">利用停止</span>
-    <% end %>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 mx-auto text-center">
+      <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <table>
+          <div class="card-header">
+            <h2>ユーザー一覧</h2>
+          </div>
+          <div class="card-body">
+            <% @users.each do |user| %>
+              <table>
+                <tr>
+                  <td>
+                    <%= link_to admin_user_path(user.id) do %>
+                      <%= image_tag user.get_image %>
+                      <%= user.name %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if user.is_active == false %>
+                      <span class="text-danger font-weight-bold">利用停止</span>
+                    <% end %>
+                  </td>
+                </tr>
+              </table>
+            <% end %>
+          </div>
+        </table>
+      </div>
+    </div>
   </div>
-<% end %>
+</div>
+
+
+  
+    
+      
+      
+   
+    
+      
+      
+    
+    
+  

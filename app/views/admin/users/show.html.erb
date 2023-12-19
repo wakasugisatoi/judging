@@ -1,28 +1,61 @@
-<%= link_to admin_users_path do %>
-<h1><i class="fa-solid fa-angle-left"></i></h1>
-<% end %>
-<div>
-  <%= image_tag @user.get_image %>
-  <h3><%= @user.name %></h3>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to admin_users_path do %>
+        <i class="fa-solid fa-angle-left fa-2x"></i>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 mx-auto text-center">
+      <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <div class="row mt-5">
+          <div class="col-md-7 d-flex ml-5">
+            <%= image_tag @user.get_image %>
+            <h3><%= @user.name %></h3>
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-3 d-flex text-right">
+            <%= form_with(model: @user, url: is_active_admin_user_path(@user), method: :patch) do |f| %>
+              <% if @user.is_active == true %>
+                <span class="text-success font-weight-bold", style="font-size: 25px">有効</span>
+              <% elsif @user.is_active == false %>
+                <span class="text-danger font-weight-bold", style="font-size: 25px">利用停止</span>
+              <% end %>
+              <%= f.submit '変更', class: "btn btn-secondary" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col mt-5">
+            <% @judges.each do |judge| %>
+              <div class="card mx-auto" style="width: 100%;">
+                <div class="row mt-3">
+                  <div class="col-md-1"></div>
+                  <div class="col-md-6 text-left">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <%= judge.user.name %>
+                      <div>
+                        <%= judge.history.year %> 年
+                        <i class="fa-solid fa-angles-right"></i>
+                        <%= judge.comedian.name %>
+                      </div>
+                      <%= judge.point %> 点
+                    </div>
+                  </div>
+                  <div class="col-md-4 text-right">
+                    <%= link_to "削除", admin_judge_path(judge) , data: { confirm: "本当に削除しますか？" }, method: :delete, class: "btn btn-danger" %>
+                  </div>
+                  <div class="col-md-1"></div>
+                  <div class="col-md-7 mx-auto text-left">
+                    <%= judge.impression %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<%= form_with(model: @user, url: is_active_admin_user_path(@user), method: :patch) do |f| %>
-<% if @user.is_active == true %>
-  <span class="text-success font-weight-bold">有効</span>
-<% elsif @user.is_active == false %>
-  <span class="text-danger font-weight-bold">利用停止</span>
-<% end %>
-<%= f.submit '変更' %>
-<% end %>
-
-<% @judges.each do |judge| %>
-  
-  <%= image_tag judge.user.get_image %>
-  <%= judge.user.name %>
-
-  <%= judge.history.year %> 年>>
-  <%= judge.comedian.name %>
-  <h3><%= judge.point %> 点</h3>
-  <%= judge.impression %>
-  
-<% end %>
