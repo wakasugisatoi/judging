@@ -1,5 +1,10 @@
 @use '~bootstrap/scss/bootstrap';
 
+select option[value=""] {
+  display: none;
+}
+
+
  .flash-message {
   border-radius: 5px;
   padding: 16px 24px;
@@ -19,8 +24,28 @@
 }
 
 .large-image {
-  width: 150px; /* 適切なサイズに調整 */
-  height: auto; /* アスペクト比を維持 */
+  width: 150px; 
+  height: auto; 
 }
 
   
+.main-visual {
+  background-image: url('/assets/images/orenge0124.png');
+  background-size: covers;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url('/assets/images/orenge0124.png')
+}
+
+.footerFixed {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+  min-height: 100vh;
+  position: relative; 
+}
+

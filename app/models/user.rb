@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_one_attached :image
   
   validates :name, presence: true
-  validates :introduction, length: { maximum: 140 }
+  validates :introduction, length: { maximum: 150 }
   
   
   def self.guest
@@ -22,7 +22,7 @@ class User < ApplicationRecord
   
   def get_image
     unless image.attached?
-      file_path = Rails.root.join('app/assets/images/icon.jpg')
+      file_path = Rails.root.join('app/assets/images/icon.png')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     image.variant(resize_to_limit: [40, 40]).processed
