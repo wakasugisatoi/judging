@@ -9,7 +9,8 @@ class Public::JudgesController < ApplicationController
   end
   
   def index
-    @judges = Judge.all.order(created_at: :desc)
+    @user_ids = User.where(is_active: true).pluck(:id)
+    @judges = Judge.where(user_id: @user_ids).order(created_at: :desc)
   end
   
   def new

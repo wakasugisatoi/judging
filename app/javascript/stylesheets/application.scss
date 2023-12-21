@@ -28,17 +28,14 @@ select option[value=""] {
   height: auto; 
 }
 
+.icon-image {
+  width: 50px; 
+  height: auto; 
+}
   
 .main-visual {
-  background-image: url('/assets/images/orenge0124.png');
-  background-size: covers;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-image: url('/assets/images/orenge0124.png')
+  background-image: url('../images/orange0124.png');
+  background-size: cover;
 }
 
 .footerFixed {

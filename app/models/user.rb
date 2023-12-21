@@ -25,7 +25,7 @@ class User < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/icon.png')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    image.variant(resize_to_limit: [40, 40]).processed
+    image.variant(resize_to_limit: [400, 400]).processed
   end
   
 end
