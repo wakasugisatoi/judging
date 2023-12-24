@@ -4,7 +4,7 @@
       <h2><#%= @history.year %>年のファイナリスト一覧</h2>
       <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
         <div class="card-header">
-          <#%= link_to edit_admin_finalist_path(@history.id) do %>
+          <%= link_to edit_admin_finalist_path(@history.id) do %>
             <div class="text-right">
               <p>ファイナリストを編集する<i class="fas fa-chevron-circle-right"></i></p>
             </div>

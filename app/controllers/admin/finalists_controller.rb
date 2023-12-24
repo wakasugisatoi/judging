@@ -8,7 +8,8 @@ class Admin::FinalistsController < ApplicationController
 
   def new
     @history = History.new
-    @history.comedians.build
+    # @history.comedians.buil
+    # @comedians = @history.comedians
   end
 
   def create

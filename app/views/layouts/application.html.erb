@@ -16,7 +16,7 @@
   <body>
     <div class="footerFixed">
       <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark">
           <div class="container">
             <a class="navbar-brand" href="/">logo</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,22 +25,22 @@
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav ml-auto">
                 <% if user_signed_in? %>
-                  <li><%= link_to  new_judge_path, class: "btn btn-light btn-sm rounded-pill" do %>審査投稿<% end %></li>
-                  <span title="ホーム"><%= link_to root_path do %><i class="fa-solid fa-house fa-lg ml-4"></i><% end %></span>
-                  <span title="ファイナリスト"><%= link_to histories_path do %><i class="fa-solid fa-microphone-lines fa-lg ml-4"></i><% end %></span>
-                  <span title="マイページ"><%= link_to mypage_user_path(current_user) do %><i class="fa-solid fa-circle-user fa-lg ml-4"></i><% end %></span>
-                  <span title="ログアウト"><%= link_to destroy_user_session_path, method: :delete do %><i class="fa-solid fa-right-from-bracket fa-lg ml-4"></i><% end %></span>
+                  <span><%= link_to  new_judge_path, class: "btn btn-outline-dark btn-sm rounded-pill" do %>審査投稿<% end %></span>
+                  <span title="ホーム"><%= link_to root_path do %><i class="fa-solid fa-house fa-lg ml-4 text-light"></i><% end %></span>
+                  <span title="ファイナリスト"><%= link_to histories_path do %><i class="fa-solid fa-microphone-lines fa-lg ml-4 text-light"></i><% end %></span>
+                  <span title="マイページ"><%= link_to mypage_user_path(current_user) do %><i class="fa-solid fa-circle-user fa-lg ml-4 text-light"></i><% end %></span>
+                  <span title="ログアウト"><%= link_to destroy_user_session_path, method: :delete do %><i class="fa-solid fa-right-from-bracket fa-lg ml-4 text-light"></i><% end %></span>
                 <% elsif admin_signed_in? %>
                   <li><%= link_to admin_homes_top_path, class: "btn btn-outline-light btn-sm rounded-pill" do %>ファイナリスト<% end %></li>
                   <li><%= link_to admin_users_path, class: "btn btn-outline-light btn-sm ml-2 rounded-pill" do %>ユーザー管理<% end %></li>
                   <li><%= link_to admin_judges_path, class: "btn btn-outline-light btn-sm ml-2 rounded-pill" do %>投稿管理<% end %></li>
                   <li><%= link_to destroy_admin_session_path, class: "btn btn-outline-light btn-sm ml-2 rounded-pill", method: :delete do %>ログアウト<% end %></li>
                 <% else %>
-                  <span title="ホーム"><%= link_to root_path do %><i class="fa-solid fa-house fa-lg"></i><% end %></span>
-                  <span title="ファイナリスト"><%= link_to histories_path do %><i class="fa-solid fa-microphone-lines fa-lg ml-4"></i><% end %></span>
-                  <span title="新規登録"><%= link_to new_user_registration_path do %><i class="fa-solid fa-user-plus fa-lg ml-4"></i><% end %></span>
-                  <span title="ログイン"><%= link_to new_user_session_path do %><i class="fa-solid fa-right-to-bracket fa-lg ml-4"></i><% end %></span>
-                  <li><%= link_to users_guest_guest_sign_in_path, class: "btn btn-outline-light btn-sm ml-4", style: "font-size: 8px;", method: :post do %>ゲストログイン<% end %></li>
+                  <span title="ホーム"><%= link_to root_path do %><i class="fa-solid fa-house text-light fa-lg ml-4"></i><% end %></span>
+                  <span title="ファイナリスト"><%= link_to histories_path do %><i class="fa-solid fa-microphone-lines text-light fa-lg ml-4"></i><% end %></span>
+                  <span title="新規登録"><%= link_to new_user_registration_path do %><i class="fa-solid fa-user-plus text-light fa-lg ml-4"></i><% end %></span>
+                  <span title="ログイン"><%= link_to new_user_session_path do %><i class="fa-solid fa-right-to-bracket text-light fa-lg ml-4"></i><% end %></span>
+                  <span><%= link_to users_guest_guest_sign_in_path, class: "btn btn-outline-light btn-sm ml-4", style: "font-size: 8px;", method: :post do %>ゲストログイン<% end %></span>
                 <% end %>
               </ul>
             </div>
@@ -48,7 +48,6 @@
         </nav>
       </header>
       <main>
-        <div class="main-visual">
           <% if flash[:notice] %>
             <p class="flash-message notice"><%= flash[:notice] %></p>
           <% end %>
@@ -57,9 +56,10 @@
           <% end %>
           
           <%= yield %>
-        </div>
+        <div class="bg_pattern Boxes"></div>
+        <div class="section"></div>
       </main>
-      <footer class="bg-dark text-white text-center pt-3">
+      <footer class="text-dark text-center pt-3 footer">
         <p>JUDGING</p>
       </footer>
     </div>

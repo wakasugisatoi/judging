@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'homes/top'
     
-    resources :finalists, only: [:index, :show, :new, :create, :edit, :update]
+    resources :finalists, only: [:show, :new, :create, :edit, :update]
     resources :judges, only: [:index, :destroy]
     resources :users, only: [:index, :show] do
       member do

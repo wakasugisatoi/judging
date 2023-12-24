@@ -3,7 +3,7 @@
       
         <div class="col-md-10 text-left">
           <%= link_to mypage_user_path(judge_comment.user.id) do %>
-            <%= image_tag judge_comment.user.get_image %>
+            <%= image_tag judge_comment.user.get_image, class: "icon-image" %>
             <%= judge_comment.user.name %>
           <% end %>
           <%= time_ago_in_words(judge_comment.created_at) %>前

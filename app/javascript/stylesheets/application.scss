@@ -24,25 +24,57 @@ select option[value=""] {
 }
 
 .large-image {
+  border-radius:50%;
   width: 150px; 
   height: auto; 
 }
 
 .icon-image {
+  border-radius:50%;
   width: 50px; 
   height: auto; 
 }
   
-.main-visual {
-  background-image: url('../images/orange0124.png');
-  background-size: cover;
+// .main-visual {
+//   background-image: url('../images/orange0124.png');
+//   background-size: cover;
+// }
+
+// 背景
+.bg_pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f3f3f3;
+  opacity: 0.4;
+  z-index: -1;
+}
+.Boxes {
+  background-image:  linear-gradient(#c0c0c0 2px, transparent 2px), linear-gradient(to right, #c0c0c0 2px, #f3f3f3 2px);
+  background-size: 40px 40px;
 }
 
+
+.navbar {
+  background-color: #c0c0c0;
+}
+
+// フッター
 .footerFixed {
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 100%;
   min-height: 100vh;
   position: relative; 
+}
+
+.footer {
+  background-color: #c0c0c0;
+}
+
+.card-header {
+  background-color: #c0c0c0;
 }
 
