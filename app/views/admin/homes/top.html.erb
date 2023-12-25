@@ -15,7 +15,7 @@
             <div class="row">
               <% histories.each do |history| %>
                 <div class="col">
-                  <span><%= link_to history.year, admin_finalist_path(history) , class: "btn btn-secondary mt-4", style: "width: 100px" %></span>
+                  <span><%= link_to "#{history.year}年", admin_finalist_path(history) , class: "btn btn-secondary mt-4", style: "width: 100px" %></span>
                 </div>          
               <% end %>
             </div>
