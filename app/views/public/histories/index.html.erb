@@ -2,7 +2,9 @@
   <div class="row">
     <div class="col-md-7 mx-auto text-center">
       <div class="card shadow-lg p-3 mb-5 pb-5 bg-body-tertiary rounded">
-        <h2>History</h2>
+        <div class="card-header">
+          <h2>History</h2>
+        </div>
         <% @histories.each_slice(3) do |histories| %>
           <div class="row">
             <% histories.each do |history| %>

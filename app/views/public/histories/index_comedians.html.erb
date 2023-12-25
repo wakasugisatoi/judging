@@ -8,8 +8,10 @@
   </div>
   <div class="row">
     <div class="col-md-7 mx-auto text-center">
-      <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
-        <h2><%= @history.year %> 年のファイナリスト一覧</h2>
+      <div class="card shadow-lg p-3 mb-5 pb-5 bg-body-tertiary rounded">
+        <div class="card-header">
+          <h2><%= @history.year %> 年のファイナリスト一覧</h2>
+        </div>
         <% @comedians.each_slice(3) do |comedians| %>
           <div class="row">
             <% comedians.each do |comedian| %>

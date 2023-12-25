@@ -18,7 +18,9 @@
           <%= render 'public/judges/judge', judge: judge %>
         <% end %>
       <% else %>
-        <p>投稿はありません。</p>
+        <div class="card pt-3">
+          <p>投稿はありません。</p>
+        </div>
       <% end %>
     </div>
     <div class="col-md-2"></div>

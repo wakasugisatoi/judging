@@ -1,4 +1,20 @@
-<%= form_with model: @history , url: admin_finalists_path, method: :post do |h| %>
-  <%# フォームのテンプレート %>
-  <% render 'admin/finalists/history_form', h: h %>
-<% end %>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 mx-auto text-center">
+      <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <div class="card-header">
+          <%= link_to admin_homes_top_path(@judge), class: 'btn btn-link text-left' do %>
+            <h5>キャンセル</h5>
+          <% end %>
+          <h4 class="text-center">ファイナリスト登録</h4>
+        </div>
+        <div class="card-body">
+          <%= render 'public/judges/error_message', hoge: @history %>
+          <%= form_with model: @history , url: admin_finalists_path, method: :post do |h| %>
+            <% render 'admin/finalists/history_form', h: h %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

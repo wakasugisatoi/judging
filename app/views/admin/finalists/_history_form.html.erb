@@ -1,11 +1,8 @@
 <div class="field">
-  <%= h.label :year, '開催年' %><br>
+  <%= h.label :year, '開催年 :' %>
   <%= h.text_field :year %><br>
 </div>
-<h3>Details --></h3>
 <div class="details">
-  <%# トラックの追加フォームをするボタン %>
-  <%# 詳しいオプション : https://github.com/nathanvda/cocoon#link_to_add_association %>
   <%= link_to_add_association 'ファイナリストの追加',
                               # form_withのformタグ変数
                               h,
@@ -20,20 +17,10 @@
                                 # フォームを前後どの位置に追加するか。(初期値: before)
                                 association_insertion_method: 'after',
                               }
-                              # フォームオブジェクトを指定する場合(初期値 : f)
-                              # form_name: 'comedian'
-                              # 部分テンプレートに渡す変数があれば記述
-                              # render_options: {
-                              #   locals: {
-                              #     # 通常の部分テンプレートと同じ記述
-                              #   }
-                              # }
   %>
 
   <hr>
 
-  <%# フォームを追加する場所。%>
-  <%#   link_to_add_associationのassociation_insertion_nodeで指定 %>
   <div id="comedian-forms">
     <%= h.fields_for :comedians do |comedian| %>
       <%= render 'admin/finalists/comedian_fields', f: comedian %>
@@ -43,5 +30,5 @@
 
 </div>
 <div class="field">
-  <%= h.submit %>
+  <%= h.submit class: 'btn btn-dark rounded-pill'%>
 </div>

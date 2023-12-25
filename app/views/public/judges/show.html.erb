@@ -57,11 +57,15 @@
         </div>
       </div>
     </div>
-    <div class="col-md-5 mx-auto text-center">
-      <div id="comment_index">
-        <%= render 'public/judge_comments/index', judge: @judge %>
+    <div class="col-md-6 mx-auto text-center">
+      <div class="card">
+        <div class="card-body px-3 py-3">
+          <%= render 'public/judge_comments/form', judge: @judge, judge_comment: @judge_comment %>
+          <div id="comment_index">
+            <%= render 'public/judge_comments/index', judge: @judge %>
+          </div>
+        </div>
       </div>
-      <%= render 'public/judge_comments/form', judge: @judge, judge_comment: @judge_comment %>
     </div>
   </div>
 </div>   
