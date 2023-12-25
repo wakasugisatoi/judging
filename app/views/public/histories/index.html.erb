@@ -9,7 +9,7 @@
           <div class="row">
             <% histories.each do |history| %>
               <div class="col">
-                 <span><%= link_to history.year, comedians_history_path(history.id), class: "btn btn-dark mt-4", style: "width: 100px" %></span>
+                 <span><%= link_to "#{history.year}年", comedians_history_path(history.id), class: "btn btn-dark mt-4", style: "width: 100px" %></span>
               </div>
             <% end %>
           </div>

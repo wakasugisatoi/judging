@@ -3,10 +3,17 @@
     <div class="col-md-8 mx-auto text-center">
       <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
         <div class="card-header">
-          <%= link_to admin_homes_top_path(@judge), class: 'btn btn-link text-left' do %>
-            <h5>キャンセル</h5>
-          <% end %>
-          <h4 class="text-center">ファイナリスト登録</h4>
+          <div class="row">
+            <div class="col-3">
+              <%= link_to admin_homes_top_path(@judge), class: 'btn btn-link text-left' do %>
+                <h5>キャンセル</h5>
+              <% end %>
+            </div>
+            <div class="col-6 mx-auto">
+              <h4>ファイナリスト登録</h4>
+            </div>
+            <div class="col-3"></div>
+          </div>
         </div>
         <div class="card-body">
           <%= render 'public/judges/error_message', hoge: @history %>

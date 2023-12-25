@@ -1,12 +1,9 @@
 <div class="nested-fields">
   <div class="field">
-
-    <%= f.label :name, 'ファイナリスト名' %>
+    <%= f.label :name, 'ファイナリスト名 :' %>
     <%= f.text_field :name %>
+    <%= link_to_remove_association raw('<i class="fa-solid fa-circle-xmark"></i> 削除'), f, class: 'btn btn-dark btn-sm rounded-pill'%>
   </div>
-  <div class="field">
-    <%= link_to_remove_association "削除", f %>
-  </div>
+
   <hr>
 </div>
-

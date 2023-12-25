@@ -1,5 +1,8 @@
 ja:
   activerecord:
+    models:
+      history: 年度
+      comedian: 芸人
     attributes:
       user:
         name: 名前
@@ -10,6 +13,8 @@ ja:
         password: パスワード
       comedian:
         name: 芸人
+      comedians:
+        name: 芸人名
       history:
         year: 年度
       judge:
@@ -19,6 +24,12 @@ ja:
         history: 年度
         
     errors:
+      models:
+        comedian:
+          attributes:
+            name:
+              blank: "を入力してください"
+              taken: "は既に存在します"
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:

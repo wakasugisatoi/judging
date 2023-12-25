@@ -18,14 +18,16 @@
       <header>
         <nav class="navbar navbar-expand-lg navbar-dark">
           <div class="container">
-            <a class="navbar-brand" href="/"><%= image_tag('logo.jpg', size: "100x50") %></a>
+            <a class="navbar-brand" href="/">
+              <%= image_tag('logo.jpg', size: "100x50") %>
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav ml-auto">
                 <% if user_signed_in? %>
-                  <span><%= link_to  new_judge_path, class: "btn btn-outline-dark btn-sm rounded-pill" do %>審査投稿<% end %></span>
+                  <span><%= link_to new_judge_path, class: "btn btn-outline-dark btn-sm rounded-pill" do %>審査投稿<% end %></span>
                   <span title="ホーム"><%= link_to root_path do %><i class="fa-solid fa-house fa-lg ml-4 text-light"></i><% end %></span>
                   <span title="ファイナリスト"><%= link_to histories_path do %><i class="fa-solid fa-microphone-lines fa-lg ml-4 text-light"></i><% end %></span>
                   <span title="マイページ"><%= link_to mypage_user_path(current_user) do %><i class="fa-solid fa-circle-user fa-lg ml-4 text-light"></i><% end %></span>

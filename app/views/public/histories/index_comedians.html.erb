@@ -12,15 +12,13 @@
         <div class="card-header">
           <h2><%= @history.year %> 年のファイナリスト一覧</h2>
         </div>
-        <% @comedians.each_slice(3) do |comedians| %>
-          <div class="row">
-            <% comedians.each do |comedian| %>
-              <div class="col">
-                <span><%= link_to comedian.name, comedian_judge_path(comedian.id), class: "btn btn-dark mt-4", style: "width: 100px" %></span>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
+        <div class="row">
+          <% @comedians.each do |comedian| %>
+            <div class="col-4">
+              <span><%= link_to comedian.name, comedian_judge_path(comedian.id), class: "btn btn-dark mt-4", style: "width: 170px" %></span>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

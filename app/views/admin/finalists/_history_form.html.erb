@@ -1,9 +1,13 @@
-<div class="field">
-  <%= h.label :year, '開催年 :' %>
-  <%= h.text_field :year %><br>
+<div class="row">
+  <div class="col-6 mx-auto">
+    <div class="field mb-5">
+      <%= h.label :year, '開催年 :' %>
+      <%= h.text_field :year %><br>
+    </div>
+  </div>
 </div>
 <div class="details">
-  <%= link_to_add_association 'ファイナリストの追加',
+  <%= link_to_add_association raw('<i class="fa-regular fa-square-plus"></i> ファイナリストの追加'),
                               # form_withのformタグ変数
                               h,
                               # フォームのデータを追加するモデル名
@@ -16,7 +20,8 @@
                                 association_insertion_node: '#comedian-forms',
                                 # フォームを前後どの位置に追加するか。(初期値: before)
                                 association_insertion_method: 'after',
-                              }
+                              },
+                              class: 'btn btn-secondary rounded-pill'
   %>
 
   <hr>
