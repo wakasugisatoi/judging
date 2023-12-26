@@ -11,15 +11,13 @@
           <% end %>
         </div>
         <div class="card-body">
-          <% @histories.each_slice(3) do |histories| %>
-            <div class="row">
-              <% histories.each do |history| %>
-                <div class="col">
-                  <span><%= link_to "#{history.year}年", admin_finalist_path(history) , class: "btn btn-secondary mt-4", style: "width: 100px" %></span>
-                </div>          
-              <% end %>
-            </div>
-          <% end %>
+          <div class="row">
+            <% @histories.each do |history| %>
+              <div class="col-md-4 col-6">
+                <span><%= link_to "#{history.year}年", admin_finalist_path(history) , class: "btn btn-secondary mt-4", style: "width: 100px" %></span>
+              </div>          
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
