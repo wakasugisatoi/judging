@@ -14,8 +14,8 @@
         </div>
         <div class="row">
           <% @comedians.each do |comedian| %>
-            <div class="col-4">
-              <span><%= link_to comedian.name, comedian_judge_path(comedian.id), class: "btn btn-dark mt-4", style: "width: 170px" %></span>
+            <div class="col-md-4 col-6">
+              <span><%= link_to comedian.name, comedian_judge_path(comedian.id), class: "btn btn-dark mt-4", style: "width: 100%" %></span>
             </div>
           <% end %>
         </div>

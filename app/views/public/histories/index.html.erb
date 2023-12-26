@@ -5,15 +5,13 @@
         <div class="card-header">
           <h2>History</h2>
         </div>
-        <% @histories.each_slice(3) do |histories| %>
-          <div class="row">
-            <% histories.each do |history| %>
-              <div class="col">
-                 <span><%= link_to "#{history.year}年", comedians_history_path(history.id), class: "btn btn-dark mt-4", style: "width: 100px" %></span>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
+        <div class="row">
+          <% @histories.each do |history| %>
+            <div class="col-md-4 col-6">
+               <span><%= link_to "#{history.year}年", comedians_history_path(history.id), class: "btn btn-dark mt-4", style: "width: 100px" %></span>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

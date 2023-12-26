@@ -34,11 +34,6 @@ select option[value=""] {
   width: 50px; 
   height: auto; 
 }
-  
-// .main-visual {
-//   background-image: url('../images/orange0124.png');
-//   background-size: cover;
-// }
 
 // 背景
 .bg_pattern {
@@ -87,6 +82,11 @@ body {
   font-family: 'Noto Sans JP', sans-serif;
 }
 
+.line {
+  border-bottom: 8px solid #c0c0c0;
+  display: inline-block;
+  padding-bottom: 10px;
+}
 
 /* スマートフォンサイズ用のスタイル */
   @media (max-width: 767px) {
