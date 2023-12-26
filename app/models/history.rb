@@ -4,7 +4,7 @@ class History < ApplicationRecord
   # validates_associated :comedians
   
   #親子関係のあるモデルを同時に扱う，親モデルから子モデルの削除ができる
-  accepts_nested_attributes_for :comedians, allow_destroy: true 
+  accepts_nested_attributes_for :comedians, reject_if: :all_blank, allow_destroy: true
   
   validates :year, presence: true
   

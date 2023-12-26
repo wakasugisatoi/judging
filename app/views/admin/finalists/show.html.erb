@@ -13,7 +13,7 @@
         <div class="card-body">
           <div class="row">
             <% @history.comedians.each.with_index(1) do |comedian, n| %>
-              <div class="col-6"><h5><%= "#{n}組目" %> <%= comedian.name %></h5></div>
+              <div class="col-6"><h5 class="text-left"><%= "#{n}組目" %> <%= comedian.name %></h5></div>
             <% end %>
           </div>
         </div>  

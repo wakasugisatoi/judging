@@ -41,7 +41,7 @@ class Admin::FinalistsController < ApplicationController
   private
   
   def fainalist_params
-    params.require(:history).permit(:year, comedians_attributes: [:id, :name])
+    params.require(:history).permit(:year, comedians_attributes: [:id, :name, :_destroy])
   end
   
 end
