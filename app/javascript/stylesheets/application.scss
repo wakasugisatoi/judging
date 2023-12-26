@@ -86,3 +86,45 @@ a {
 body {
   font-family: 'Noto Sans JP', sans-serif;
 }
+
+
+/* スマートフォンサイズ用のスタイル */
+  @media (max-width: 767px) {
+    .card {
+      width: 100%; /* カードを横幅100%に設定 */
+      margin-bottom: 15px; /* カード同士の余白を設定 */
+    }
+
+    .fixed-comment-form {
+      margin-bottom: 15px; /* コメントフォームと他の要素の余白を設定 */
+    }
+  }
+
+  /* タブレットサイズ用のスタイル */
+  @media (min-width: 768px) and (max-width: 991px) {
+    .card {
+      width: 100%; /* カードを横幅100%に設定 */
+      margin-bottom: 15px; /* カード同士の余白を設定 */
+    }
+
+    .fixed-comment-form {
+      margin-bottom: 15px; /* コメントフォームと他の要素の余白を設定 */
+    }
+  }
+
+  /* デスクトップサイズ用のスタイル */
+  @media (min-width: 992px) {
+    .card {
+      width: 100%; 
+      margin-bottom: 15px; /* カード同士の縦の余白を設定 */
+    }
+
+    .fixed-comment-form {
+      margin-bottom: 15px; /* コメントフォームと他の要素の余白を設定 */
+    }
+
+    .row {
+      display: flex; /* 行を横並びにする */
+      flex-wrap: wrap; /* 画面サイズに収まらない場合、折り返す */
+    }
+  }
