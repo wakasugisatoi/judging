@@ -28,4 +28,7 @@ class User < ApplicationRecord
     image.variant(resize_to_limit: [400, 400]).processed
   end
   
+  def already_favorited?(judge)
+    self.favorites.exists?(judge_id: judge.id)
+  end
 end
