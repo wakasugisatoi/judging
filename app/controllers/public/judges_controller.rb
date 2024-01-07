@@ -1,5 +1,6 @@
 class Public::JudgesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
+  before_action :is_matching_login_user, only: [:edit, :update, :destory]
   
   def get_comedians_by_year
     year = params[:year]
@@ -76,4 +77,12 @@ class Public::JudgesController < ApplicationController
   def judge_params
     params.require(:judge).permit(:point, :impression, :history_id, :comedian_id, :id)
   end
+  
+  def is_matching_login_user
+    @judge = Judge.find(params[:id])
+    unless @judge.user.id == current_user.id
+      redirect_to mypage_user_path(current_user)
+    end
+  end
+  
 end
