@@ -6,7 +6,7 @@ class Judge < ApplicationRecord
   has_many :favorites, dependent: :destroy
   
   validates :point, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
-  validates :impression, length: { in: 1..300 }
+  validates :impression, presence: true, length: { in: 1..300 }
   
   def favorited_by?(user)
     return false unless user && user.id
