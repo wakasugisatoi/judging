@@ -18,7 +18,7 @@
 * 賞レース終了後に他人の意見が気になる時
  
 ## 設計書
-
+* アプリケーション詳細設計：https://docs.google.com/spreadsheets/d/19x4ZXLG982F9Ow94UOgVdJ514oTyXDm2DilWGDHf1Zk/edit#gid=549108681
 
 ## 開発環境 
 * OS: Linux(CentOS)
